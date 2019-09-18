@@ -1,8 +1,7 @@
 import getImageByIdService from '../service/getImageById';
 export default function getImageById(id) {
-  return (dispatch, getState) => {
+  return dispatch => {
     dispatch({ type: 'FETCHING_IMAGE' });
-
     getImageByIdService(id)
       .then(res => {
         dispatch({

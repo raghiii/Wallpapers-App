@@ -1,8 +1,7 @@
 import getSearchedImageService from '../service/getSearchedImage';
 export default function getSearchedImage(query) {
-  return (dispatch, getState) => {
+  return dispatch => {
     dispatch({ type: 'SEARCHING_IMAGE' });
-
     getSearchedImageService(query)
       .then(res => {
         dispatch({

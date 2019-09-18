@@ -35,11 +35,9 @@ target 'wallpapers' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-  pod 'RNFS', :path => '../node_modules/react-native-fs'
 
   pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
 
-  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
   target 'wallpapersTests' do
     inherit! :search_paths

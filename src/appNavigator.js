@@ -1,16 +1,7 @@
-import React, { useEffect } from 'react';
-import {
-  Text,
-  View,
-  Image,
-  ActivityIndicator,
-  TouchableOpacity,
-  PermissionsAndroid,
-  Share,
-  Platform
-} from 'react-native';
+import React from 'react';
+import { View, Share, Platform } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator, HeaderTitle } from 'react-navigation-stack';
+import { createStackNavigator } from 'react-navigation-stack';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Main from './Main';
@@ -26,7 +17,6 @@ onShare = async navigation => {
   }
 };
 
-toggleTheme = () => {};
 const MainNavigator = createStackNavigator({
   Main: {
     screen: Main,

@@ -1,47 +1,30 @@
-import React, { Fragment, useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
-  ScrollView,
   View,
   Text,
   FlatList,
-  Image,
   TouchableOpacity,
   StatusBar,
   TextInput
 } from 'react-native';
 import { connect } from 'react-redux';
 import FastImage from 'react-native-fast-image';
-import Masonry from 'react-native-masonry';
-import axios from 'axios';
-import Unsplash from 'unsplash-js/native';
 import getImages from './store/actions/getImages';
 import Icon from 'react-native-vector-icons/EvilIcons';
-import LinearGradient from 'react-native-linear-gradient';
 
 const Main = props => {
-  unsplash = new Unsplash({
-    applicationId:
-      'a87ce2969e51acf89894a8aa76db4b33676e40cf54dfacd3f073fd202639f2a9',
-    secret: '42bf2aabc7a456a2df87307909e4f22fb6809cd6599014133dcb26d6f38d8a42'
-  });
   useEffect(() => {
     props.getImages();
-    console.log('images reducer', props.images);
   }, []);
 
-  const randomHeight = [250, 300, 400];
-  const randomWidth = [400, 500, 800, 300];
   const [searchQuery, setSearchQuery] = useState('');
 
   function endReached() {
-    console.log('endReached');
     // props.getImages();
   }
 
   function handleClick(index, item) {
-    console.log('handleClick', index, item);
     props.navigation.navigate('ImageDetail', item);
   }
 
@@ -50,15 +33,12 @@ const Main = props => {
   }
 
   function onSearchSubmit() {
-    console.log('searchQuery', searchQuery);
     props.navigation.navigate('ImageSearch', searchQuery);
     setSearchQuery('');
   }
   return (
     <SafeAreaView>
-      <TouchableOpacity onPress={() => console.log('statusbar onPress')}>
-        <StatusBar barStyle="default" />
-      </TouchableOpacity>
+      <StatusBar barStyle="default" />
 
       <View
         style={{
@@ -107,7 +87,6 @@ const Main = props => {
 
       <View>
         <FlatList
-          // ref="listRef"
           data={props.images}
           onEndReachedThreshold={0.5}
           onEndReached={() => endReached()}
@@ -116,9 +95,7 @@ const Main = props => {
               activeOpacity={1}
               style={{
                 height: 600,
-                // randomHeight[Math.floor(Math.random() * randomHeight.length)],
                 width: '100%'
-                // randomWidth[Math.floor(Math.random() * randomWidth.length)]
               }}
               onPress={() => handleClick(index, item)}
             >
@@ -155,7 +132,6 @@ const Main = props => {
       </View>
     </SafeAreaView>
   );
-  //   }
 };
 
 const mapStateToProps = state => {

@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Text,
   View,
-  Image,
   ActivityIndicator,
-  TouchableOpacity,
   PermissionsAndroid,
-  Alert,
-  Share,
   Platform,
   SafeAreaView,
   StatusBar
@@ -18,10 +13,8 @@ import getImageById from './store/actions/getImageById';
 import { get } from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Progress from 'react-native-progress';
-var RNFS = require('react-native-fs');
 import CameraRoll from '@react-native-community/cameraroll';
 
-// import RNFetchBlob from 'rn-fetch-blob';
 var RNFetchBlob = require('rn-fetch-blob').default;
 const PictureDir = RNFetchBlob.fs.dirs.PictureDir;
 
@@ -34,7 +27,6 @@ const ImageDetail = props => {
   }, []);
 
   async function downloadImage() {
-    console.log('downloadImage func');
     setDownloadLoader(true);
 
     if (Platform.OS === 'android') {
@@ -42,22 +34,15 @@ const ImageDetail = props => {
         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('Permission granted');
-        // Fetch attachment
         RNFetchBlob.fetch('GET', props.image.urls.full)
           .then(response => {
             let base64Str = response.data;
-
             let imageLocation = PictureDir + '/' + `${props.image.id}.jpg`;
-
-            //Save image
             RNFetchBlob.fs.writeFile(imageLocation, base64Str, 'base64');
-            console.log('FILE CREATED!!');
 
             RNFetchBlob.fs
               .scanFile([{ path: imageLocation }])
               .then(() => {
-                console.log('scan file success');
                 setDownloadLoader(false);
                 setDownloadSuccess(true);
               })
@@ -66,7 +51,6 @@ const ImageDetail = props => {
               });
           })
           .catch(error => {
-            // error handling
             console.log('Error:', error);
           });
       }
@@ -75,8 +59,6 @@ const ImageDetail = props => {
         setDownloadLoader(false);
         setDownloadSuccess(true);
       });
-
-      console.log('savetocamreroll done');
     }
   }
 
@@ -107,11 +89,9 @@ const ImageDetail = props => {
                 flex: 1
               }}
             />
-
             <View
               style={{
                 flexDirection: 'row',
-
                 justifyContent: 'flex-end'
               }}
             >

@@ -10,6 +10,5 @@ const rootReducer = combineReducers({
 export default function configureStore() {
   const enhancer = compose(applyMiddleware(thunk));
   let store = createStore(rootReducer, enhancer);
-
   return { store };
 }

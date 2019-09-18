@@ -1,0 +1,29 @@
+# OSX
+#
+.DS_Store
+
+# vs code
+#
+.vscode/
+
+# android
+android/local.properties
+android/.gradle
+android/.idea
+
+# Xcode
+#
+build/
+xcuserdata
+project.xcworkspace
+
+#ios
+ios/Pods/
+
+# Android/IntelliJ
+#
+build/
+
+# Dependency directories
+node_modules/
+

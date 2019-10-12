@@ -47,7 +47,7 @@ const ImageDetail = props => {
                 setDownloadSuccess(true);
               })
               .catch(err => {
-                console.log('scan file error');
+                console.log('scan file error', err);
               });
           })
           .catch(error => {

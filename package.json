@@ -13,7 +13,7 @@
     "deprecated-react-native-listview": "0.0.5",
     "lodash": "^4.17.15",
     "react": "16.8.6",
-    "react-native": "0.60.5",
+    "react-native": "0.62.3",
     "react-native-fast-image": "^7.0.2",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-progress": "^3.6.0",
